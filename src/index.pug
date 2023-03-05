@@ -1,0 +1,156 @@
+doctype
+html(lang='ru')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title High Pass
+    link(rel="stylesheet" href="styles/main.css")
+    link(rel="shortcut icon" href="img/favicon.png" type="image/x-icon")
+    script(defer src="https://api-maps.yandex.ru/2.1/?apikey=ваш-API-ключ&lang=ru_RU")
+    script(defer src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js")
+    script(defer src="js/main.js")
+  body
+    header.header
+      .header__container.container
+        a.header__logo.logo(href="#")
+          img(src="img/svg/sprite.svg#high-pass-logo" alt="Логотип High Pass")
+        nav.header__nav.nav
+          button.nav__burger.burger-btn
+            svg.burger__svg(width="20" height="18")
+              use(xlink:href="img/svg/sprite.svg#burger")
+          .nav__menu
+            button.nav__close.close
+              svg(width="20" height="20")
+                use(xlink:href="img/svg/sprite.svg#cross")
+            ul.nav__list
+              - var navItems = [{title: "О студии", id: "about"}, {title: "Наши проекты", id: "projects"}, {title: "Услуги", id: ""}, {title: "Мастер-классы", id: ""}, {title: "Контакты", id: "contacts"}]
+              each item in navItems
+                li.nav__item
+                  a(href=`#${item.id}`).nav__link.link= item.title
+            a.nav__tel.tel.link.link_alt(href="tel:+749542423532")
+              svg(width="22" height="22")
+                use(xlink:href="img/svg/sprite.svg#tel")
+              | +7 495 424-23-532
+        form.header__search.search
+          input.search__input(type="text" placeholder="Что будем искать?")
+          button(type="button").search__btn
+            svg(width="25" height="25")
+              use(xlink:href="img/svg/sprite.svg#search")
+    main.main
+      section.events.container
+        .events__main.main-event
+          picture.main-event__picture
+            source(media="(max-width: 767px)" srcset="img/events-main-320.jpg")
+            source(media="(max-width: 1023px)" srcset="img/events-main-768.jpg")
+            source(media="(max-width: 1919px)" srcset="img/events-main-1024.jpg")
+            img.main-event__img(loading="lazy" src="img/events-main.jpg" alt="Главное событие")
+          .main-event__tag.tag #мастеркласс
+          .main-event__content
+            p.main-event__subtitle Мастер-класс от Игоря Робова
+            h2.main-event__title Неоновый фотосет 2.0 7&nbsp;июля 20:00
+            button.main-event__btn.btn Узнать больше
+        .events__archive.archive-events
+          h2.archive-events__title.section-title Работы участников предыдущего мастер-класса
+          ul.archive-events__list
+            - var archiveList = ["1", "2", "3"]
+            each item in archiveList
+              li.archive-events__item
+                picture
+                  source(media="(max-width: 767px)", srcset=`img/events-archive-${item}-320.jpg`)
+                  source(media="(max-width: 1023px)", srcset=`img/events-archive-${item}-768.jpg`)
+                  source(media="(max-width: 1919px)", srcset=`img/events-archive-${item}-1024.jpg`)
+                  img.archive-events__img(loading="lazy" src=`img/events-archive-${item}.jpg` alt="Фото из архива")
+      section.about#about
+        div.about__container.container
+          h2.about__title.section-title О студии
+          p.about__descr В&nbsp;рамках спецификации современных стандартов, интерактивные прототипы, инициированные исключительно синтетически, ограничены исключительно образом мышления. Предварительные выводы неутешительны: высокотехнологичная концепция общественного уклада требует от&nbsp;нас анализа соответствующих условий активизации! Следует отметить, что семантический разбор внешних противодействий фиксирует необходимость распределения внутренних резервов и&nbsp;ресурсов. Безусловно, граница обучения кадров предоставляет широкие возможности для первоочередных требований. Повседневная практика показывает, что глубокий уровень погружения предполагает независимые способы реализации новых принципов формирования материально-технической и&nbsp;кадровой базы. Приятно, граждане, наблюдать, как явные признаки институционализации являются только методом политического участия и&nbsp;нарушающими общечеловеческие нормы этики.
+          form.about__form.mailing-form#mailing-form
+            .mailing-form__img-wrapper
+            h3.mailing-form__title Подписаться на рассылку
+            .mailing-form__input-wrapper
+              input.mailing-form__input.form-input#mailing-email-input(type="email" name="email" placeholder="Email")
+            button.mailing-form__btn.btn(type="submit") Отправить
+      section.projects#projects
+        .projects__container.container
+          h2.projects__title.section-title Наши проекты
+          ul.projects__list
+            - var projectsMinor = [{descr: `Синтетически, смешаны с\u00A0не\u00A0уникальными данными до степени…`, date: '16 июня', tag: '#пейзаж'},{descr: 'В своём стремлении улучшить опыт мы упускаем, что явные…', date: '28 мая', tag: '#портрет'},{descr: 'Равным образом, высокое качество позиционных высокотехнологичная концепция общественного уклада', date: '14 мая', tag: '#предмет'},{descr: 'Как принято считать, многие известные личности и по сей день остаются уделом либералов…', date: '9 марта', tag: '#ретушь'},{descr: 'С учётом сложившейся международной обстановки, новая модель организационной…', date: '1 марта', tag: '#портрет'}]
+            each project, index in projectsMinor
+              li.projects__item
+                article.projects__card.project-card.project-card_minor
+                  picture
+                    source(media="(max-width: 767px)", srcset=`img/projects-minor-${index + 1}-320.jpg`)
+                    source(media="(max-width: 1023px)", srcset=`img/projects-minor-${index + 1}-768.jpg`)
+                    source(media="(max-width: 1919px)", srcset=`img/projects-minor-${index + 1}-1024.jpg`)
+                    img.project-card__img(loading="lazy" src=`img/projects-minor-${index + 1}.jpg` alt="Иллюстрация проекта")
+                  p.project-card__descr= project.descr
+                  p.project-card__date
+                    svg(width="14" height="14")
+                      use(xlink:href="img/svg/sprite.svg#calendar")
+                    = project.date
+                  .project-card__tag.tag= project.tag
+            - var projectsMajor = [{title: "Cемантический разбор", descr: "В рамках спецификации современных стандартов, интерактивные прототипы", date: "9 апреля", tag: "#fuji"},{title: "Забвение", descr: "Играет важную роль в формировании глубокомысленных рассуждений", date: "20 марта", tag: "#проектзабвение"}]
+            each majorProject, index in projectsMajor
+              li.projects__item_major
+                article.projects__card.project-card.project-card_major
+                  picture.project-card__picture
+                    source(media="(max-width: 767px)", srcset=`img/projects-major-${index + 1}-320.jpg`)
+                    source(media="(max-width: 1023px)", srcset=`img/projects-major-${index + 1}-768.jpg`)
+                    source(media="(max-width: 1919px)", srcset=`img/projects-major-${index + 1}-1024.jpg`)
+                    img.project-card__img(loading="lazy" src=`img/projects-major-${index + 1}.jpg` alt="Иллюстрация проекта")
+                  .project-card__tag.tag= majorProject.tag
+                  .project-card__text-content
+                    p.project-card__date
+                      svg(width="14" height="14")
+                        use(xlink:href="img/svg/sprite.svg#calendar")
+                      = majorProject.date
+                    h3.project-card__title= majorProject.title
+                    p.project-card__descr= majorProject.descr
+                  button.project-card__btn.btn.btn_secondary О проекте
+      section.contacts#contacts
+        .contacts__container.container
+          h2.contacts__title.section-title Контакты
+          .contacts__map.map
+            .map__body#map
+            .map__descr
+              h3.map__title Студия «High pass»
+              p.map__address 107045, Москва, Даев переулок, дом 41, бизнес-центр «Даев Плаза», этаж 8, офис № 82
+              a.map__tel.tel.link.link_alt(href="tel:+749542423532")
+                svg(width="22" height="22")
+                  use(xlink:href="img/svg/sprite.svg#tel")
+                | +7 495 424-23-532
+              button.map__close-descr.close
+                svg(width="20" height="20")
+                  use(xlink:href="img/svg/sprite.svg#cross")
+          form.contacts__form.application-form
+            h3.application-form__title Оставить заявку
+            p.application-form__descr Оставьте ваши данные, указав в графе «Комментарий» желаемые время и дату съёмки или другого мероприятия
+            .application-form__input-wrapper
+              input.application-form__input.form-input.form-input_light#application-name-input(type="text" name="name" placeholder="Имя")
+            .application-form__input-wrapper
+              input.application-form__input.form-input.form-input_light#application-email-input(type="email" name="email" placeholder="Email")
+            textarea.application-form__textarea.form-textarea.form-textarea_light(name="comment" placeholder="Комментарий")
+            button.application-form__btn.btn(type="submit") Отправить
+    footer.footer
+      .footer__container.container
+        a.footer__logo-link(href="#")
+          img.footer__logo.logo(src="img/svg/sprite.svg#high-pass-logo" alt="Логотип High Pass")
+          p.footer__copyright Фотостудия High pass® 2018–2020
+        p.footer__citation Которая из&nbsp;моих фотографий самая любимая?
+          br
+          | Та, которую я&nbsp;собираюсь снять завтра.
+          br
+          | &copy;&nbsp;Имоджен Каннингем
+        .footer__social.social
+          h3.social__title Больше интересного:
+          ul.social__list
+            li.social__item
+              a.social__link(href="#")
+                svg(width="30" height="30")
+                  use(xlink:href="img/svg/sprite.svg#ok")
+            li.social__item
+              a.social__link(href="#")
+                svg(width="30" height="30")
+                  use(xlink:href="img/svg/sprite.svg#vk")
+
